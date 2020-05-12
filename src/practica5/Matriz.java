@@ -97,7 +97,7 @@ public class Matriz {
 
     public Matriz Multiplicar(Matriz objetoMatriz) throws Exception {
         if (this.cantidadColumnas != objetoMatriz.cantidadFilas) {
-            throw new Exception("o número de colunas da matriz A deve ser igual ao número de linhas da matriz B");
+            throw new Exception("El número de columnas da matriz A debe ser igual al número de filas de la matriz B");
         }
         //linhas da primeira matriz são multiplicados por colunas da matriz segunda
         Matriz aux = new Matriz(this.cantidadFilas, objetoMatriz.cantidadColumnas);
@@ -113,6 +113,24 @@ public class Matriz {
         return aux;
     } 
     
+    
+        public Matriz MultiplicarPunto(Matriz objetoMatriz) throws Exception {
+        if (this.cantidadColumnas != objetoMatriz.cantidadFilas) {
+            throw new Exception("El número de columnas da matriz A debe ser igual al número de filas de la matriz B");
+        }
+        //linhas da primeira matriz são multiplicados por colunas da matriz segunda
+        Matriz aux = new Matriz(this.cantidadFilas, objetoMatriz.cantidadColumnas);
+        for (int f = 0; f < cantidadFilas; f++) {
+            for (int c = 0; c < objetoMatriz.cantidadColumnas; c++) {
+                int valor = 0;
+                for (int k = 0; k < cantidadFilas; k++) {
+                    valor += (this.getElemento(f, k) * objetoMatriz.getElemento(k, c));
+                }
+                aux.objetoMatriz[f][c]=valor;
+            }
+        }
+        return aux;
+    } 
 
     public Matriz Transpuesta() throws Exception {
         if (cantidadFilas != cantidadColumnas) {
@@ -131,7 +149,6 @@ public class Matriz {
 
     } 
 
-    
     //+ calcularPotencia(exponente >=0 : int) : Matriz
     public Matriz Potencia(int exponente) throws Exception {
         //Valida si el exponente es negativo
@@ -183,115 +200,7 @@ public class Matriz {
         return aux;
     }
 
-    public boolean esTriangularSuperior() {
-        //Si debajo de la diagonal principal son nulos, tendremos una matriz triangular superior
-        if (cantidadFilas != cantidadColumnas) {
-            return false;
-        } else {
-
-            for (int f = 0; f < cantidadFilas; f++) {
-                for (int c = 0; c < cantidadColumnas; c++) {
-                    if (f > c && objetoMatriz[f][c] != 0) { //si cualquier elemento por debajo de la diagonal es diferente de cero YA NO ES
-                        return false;
-                    }
-                }
-            }
-            return true; // Solo si todos los elementos por debajo de la diagonal son CEROS.
-        }
-    }
-
-    public boolean esTriangularInferior() {
-        //acima da diagonal principal forem nulos, teremos uma matriz triangular superior,
-        if (cantidadFilas != cantidadColumnas) {
-            return false;
-        } else {
-            for (int l = 0; l < cantidadFilas; l++) {
-                for (int c = 0; c < cantidadColumnas; c++) {
-                    if (l < c && objetoMatriz[l][c] != 0) {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-    }
-
-    public boolean esSimetrica() {
-        //a transposta é igual a original
-        if (cantidadColumnas != cantidadFilas) {
-            return false;
-        } else {
-            for (int l = 0; l < cantidadFilas; l++) {
-                for (int c = 0; c < cantidadColumnas; c++) {
-                    if (objetoMatriz[l][c] != objetoMatriz[c][l]) {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-    }
-
-    public boolean esIdentidad() {
-        //
-        if (cantidadColumnas != cantidadFilas) {
-            return false;
-        } else {
-            for (int l = 0; l < cantidadFilas; l++) {
-                for (int c = 0; c < cantidadColumnas; c++) {
-                    if (l == c && objetoMatriz[l][c] != 1) {
-                        return false;
-                    } else if (l != c && objetoMatriz[l][c] != 0) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
-    public boolean esIgual(Matriz objeto) throws Exception {
-        
-        if(this.cantidadFilas != objeto.cantidadColumnas|| this.cantidadColumnas != objeto.cantidadColumnas) return false;
-        
-        for (int f = 0; f < cantidadFilas; f++) {
-            for (int c = 0; c < cantidadColumnas; c++) {
-                if (this.getElemento(f, c) != objeto.getElemento(f, c)) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public boolean esDiferente(Matriz objeto) throws Exception {
-        if(this.cantidadFilas != objeto.cantidadFilas||
-                this.cantidadColumnas != objeto.cantidadColumnas) return true;
-        for (int l = 0; l < cantidadFilas; l++) {
-            for (int c = 0; c < cantidadColumnas; c++) {
-                if (this.getElemento(l, c) != objeto.getElemento(l, c)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean esOrtogonal() throws Exception {
-        //matriz ortogonal é uma matrizl em que a inversa é igual a transposta
-        if (this.cantidadFilas != this.cantidadColumnas){
-                return false;
-        }else{
-            if(this.Multiplicar(this.Transpuesta()).esIdentidad()){
-                return true;
-            }else{
-                return false;
-            }
-        }
-        
-    }//Fin del metodo Ortogonal
-
-    //HASTA ACA LLEGAN TODOS LOS METODOS DE LA CLASE "MATRIZ"
+//HASTA ACA LLEGAN TODOS LOS METODOS DE LA CLASE "MATRIZ"
     
 }// Fin de la clase Matriz
 
