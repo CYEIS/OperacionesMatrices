@@ -9,8 +9,6 @@ package practica5;
  *
  * @author cristianyeis
  */
-
-
 public class Matriz {
 
     //atributos
@@ -55,17 +53,17 @@ public class Matriz {
         }
         objetoMatriz[filas][columnas] = elemento;
     }
-
-    public String getMatriz() {
-        String saida = "";
-        for (int f = 0; f < cantidadFilas; f++) {
-            for (int c = 0; c < cantidadColumnas; c++) {
-                saida += objetoMatriz[f][c] + "  ";
-            }
-            saida += "\n";
-        }
-        return saida;
-    }
+//
+//    public String getMatriz() {
+//        String salida = "";
+//        for (int f = 0; f < cantidadFilas; f++) {
+//            for (int c = 0; c < cantidadColumnas; c++) {
+//                salida += objetoMatriz[f][c] + "  ";
+//            }
+//            salida += "\n";
+//        }
+//        return salida;
+//    }
 
     public Matriz adicionar(Matriz objetoMatriz) throws Exception {
         if (this.cantidadFilas != objetoMatriz.cantidadFilas || this.cantidadColumnas != objetoMatriz.cantidadColumnas) {
@@ -99,7 +97,7 @@ public class Matriz {
         if (this.cantidadColumnas != objetoMatriz.cantidadFilas) {
             throw new Exception("El número de columnas da matriz A debe ser igual al número de filas de la matriz B");
         }
-        //linhas da primeira matriz são multiplicados por colunas da matriz segunda
+        //las filas de la primera Matriz son multiplicados por las columnas de la segunda matriz
         Matriz aux = new Matriz(this.cantidadFilas, objetoMatriz.cantidadColumnas);
         for (int f = 0; f < cantidadFilas; f++) {
             for (int c = 0; c < objetoMatriz.cantidadColumnas; c++) {
@@ -107,49 +105,28 @@ public class Matriz {
                 for (int k = 0; k < cantidadFilas; k++) {
                     valor += (this.getElemento(f, k) * objetoMatriz.getElemento(k, c));
                 }
-                aux.objetoMatriz[f][c]=valor;
+                aux.objetoMatriz[f][c] = valor;
             }
         }
         return aux;
-    } 
-    
-    
-        public Matriz MultiplicarPunto(Matriz objetoMatriz) throws Exception {
-        if (this.cantidadColumnas != objetoMatriz.cantidadFilas) {
-            throw new Exception("El número de columnas da matriz A debe ser igual al número de filas de la matriz B");
+    }
+
+    public Matriz MultiplicarPunto(Matriz objetoMatriz) throws Exception {
+        if ((this.cantidadFilas != objetoMatriz.cantidadFilas) || (this.cantidadColumnas != objetoMatriz.cantidadColumnas)){
+            throw new Exception("El número de elementos de la matriz A debe ser igual al número de elementos de la matriz B");
         }
-        //linhas da primeira matriz são multiplicados por colunas da matriz segunda
+        //Se multiplica elemento a elemento de la matriz A por la matriz B
         Matriz aux = new Matriz(this.cantidadFilas, objetoMatriz.cantidadColumnas);
         for (int f = 0; f < cantidadFilas; f++) {
-            for (int c = 0; c < objetoMatriz.cantidadColumnas; c++) {
-                int valor = 0;
-                for (int k = 0; k < cantidadFilas; k++) {
-                    valor += (this.getElemento(f, k) * objetoMatriz.getElemento(k, c));
-                }
-                aux.objetoMatriz[f][c]=valor;
+            for (int c = 0; c < objetoMatriz.cantidadColumnas; c++) { 
+                  aux.objetoMatriz[f][c]  = (this.getElemento(f, c) * objetoMatriz.getElemento(f, c));             
             }
         }
         return aux;
-    } 
-
-    public Matriz Transpuesta() throws Exception {
-        if (cantidadFilas != cantidadColumnas) {
-            throw new Exception("La matriz no es cuadrada");
-        }else {
-            Matriz aux = new Matriz(cantidadFilas, cantidadColumnas);
-            
-            for (int f = 0; f < cantidadFilas; f++) {
-                for (int c = 0; c < cantidadColumnas; c++) {
-                    int valor = getElemento(f, c);
-                    aux.setElemento(c, f, valor);
-                }
-            }
-            return aux;
-        }
-
-    } 
+    }
 
     //+ calcularPotencia(exponente >=0 : int) : Matriz
+    
     public Matriz Potencia(int exponente) throws Exception {
         //Valida si el exponente es negativo
         if (exponente < 0) {
@@ -163,7 +140,7 @@ public class Matriz {
         Matriz aux = new Matriz(cantidadFilas, cantidadColumnas);
         //si el exponente es = cero el resultado es 1
         switch (exponente) {
-        //si el exponente es igual a 1 el resultado es la base
+            //si el exponente es igual a 1 el resultado es la base
             case 0:
                 for (int f = 0; f < cantidadFilas; f++) {
                     for (int c = 0; c < cantidadColumnas; c++) {
@@ -190,6 +167,7 @@ public class Matriz {
         }
     }
 
+
     public Matriz multiplicarK(int constante) throws Exception {
         Matriz aux = new Matriz(this.cantidadFilas, this.cantidadColumnas);
         for (int f = 0; f < this.cantidadFilas; f++) {
@@ -201,7 +179,5 @@ public class Matriz {
     }
 
 //HASTA ACA LLEGAN TODOS LOS METODOS DE LA CLASE "MATRIZ"
-    
 }// Fin de la clase Matriz
-
 
