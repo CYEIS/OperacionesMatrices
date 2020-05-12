@@ -68,6 +68,8 @@ public class GUI5 extends javax.swing.JFrame {
         btnGuardarA = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnGuardarB = new javax.swing.JButton();
+        txtExponente = new javax.swing.JTextField();
+        jLabelExponente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,67 +155,52 @@ public class GUI5 extends javax.swing.JFrame {
         jScrollPane6.setViewportView(jTableC);
 
         btnGuardarA.setText("Guardar Matriz A");
+        btnGuardarA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarAMouseClicked(evt);
+            }
+        });
 
         btnReset.setText("Reset");
 
         btnGuardarB.setText("Guardar Matriz B");
+        btnGuardarB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarBMouseClicked(evt);
+            }
+        });
+
+        jLabelExponente.setText("Potencia a Elevar Matriz [X]^(n)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                    .addComponent(btnGuardarA, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel1))
+                            .addGap(26, 26, 26)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(btnCrearA)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(8, 8, 8))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(83, 83, 83)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(btnReset))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardarA, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel1))
-                                    .addGap(26, 26, 26)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnCrearA)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8))))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(114, 114, 114))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxOperaciones, 0, 0, Short.MAX_VALUE)
-                                    .addComponent(btnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                                .addGap(85, 85, 85)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnGuardarB)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addComponent(jLabel5))
@@ -226,20 +213,57 @@ public class GUI5 extends javax.swing.JFrame {
                                     .addComponent(txtColumnasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFilasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCrearB)))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                                .addComponent(btnCrearB)))
+                        .addGap(161, 161, 161))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGuardarB))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(65, 65, 65)
+                                                .addComponent(jLabel10))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(44, 44, 44)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabelExponente)))
+                                        .addGap(32, 32, 32))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(88, 88, 88)
+                                        .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(115, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(83, 83, 83)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
+                .addComponent(btnReset)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jLabel10)
-                        .addGap(42, 42, 42)
-                        .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnCalcular))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -273,15 +297,27 @@ public class GUI5 extends javax.swing.JFrame {
                                                     .addComponent(txtColumnasB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel4)))
                                             .addComponent(btnCrearB))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardarA)
-                            .addComponent(btnGuardarB))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                            .addComponent(btnGuardarB))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(jLabel10)
+                        .addGap(29, 29, 29)
+                        .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jLabelExponente)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnCalcular)
+                        .addGap(115, 115, 115)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,38 +394,57 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCrearBMouseClicked
 
+
     private void btnCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseClicked
-        String operacion = String.valueOf(jComboBoxOperaciones.getSelectedItem());
-        sincronizarTablaA();
-        sincronizarTablaB();
-        
-        switch (operacion) {
-            case "A+B":
-            sumarMatrices(Matriz int[][] matrizA, Matriz int[][] matrizB);
-            sincronizarTablaC();
-                break;
-             case "A-B":
-            //matrizC = restaMatrices(matrizA,matrizB);
-                break; 
-            case "A*B":
-            //matrizC = productoMatrices(matrizA,matrizB);
-                break;
-            case "AxB":
-            //matrizC = multiplicarMatrices(matrizA,matrizB);
-                break;
-            case "A(traspuesta)":
-            //matrizC = traspuestaMatriz(matrizA,matrizB);
-                break;
-            case "A^3":
-            //matrizC = potenciaMatriz(matrizA,matrizB);
-                break;
-            default:
+        try {
+            String operacion = String.valueOf(jComboBoxOperaciones.getSelectedItem());
+           
+            System.out.println("operacion: " + operacion);
+//            sincronizarTablaA();
+//            sincronizarTablaB();
+
+            if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
+                JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
+                this.txtExponente.setText(String.valueOf(""));
+            }       
+                int exponente = Integer.parseInt((txtExponente.getText()));
+                if (operacion.equals("A+B")) {
+                    matrizC = Matriz.sumar(matrizA, matrizB);
+                } else if (operacion.equals("A-B")) {
+                    matrizC = Matriz.restar(matrizA, matrizB);
+                } else if (operacion.equals("A*B")) {
+                    matrizC = Matriz.multiplicacionPunto(matrizA, matrizB);
+                } else if (operacion.equals("AxB")) {
+                    matrizC = Matriz.multiplicacionMatricial(matrizA, matrizB);
+                } else if (operacion.equals("A(traspuesta)")) {
+                    matrizC = Matriz.traspuesta(matrizA);
+                } else if (operacion.equals("B(traspuesta)")) {
+                    matrizC = Matriz.traspuesta(matrizB);
+                } else if (operacion.equals("A^n")) {
+                    matrizC = Matriz.Potencia(matrizA, exponente);
+                }else if (operacion.equals("B^n")) {
+                    matrizC = Matriz.Potencia(matrizB, exponente);
+                }
+//            sincronizarTablaC();
+            }catch (Exception ex) {
+            System.out.println(String.format("error creando matriz C: %s", ex.getMessage()));
         }
+
 
     }//GEN-LAST:event_btnCalcularMouseClicked
 
-    private void crearTablaA(int filas, int columnas) {
 
+    private void btnGuardarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarAMouseClicked
+
+        // aca seria solo sincronizar??
+    }//GEN-LAST:event_btnGuardarAMouseClicked
+
+    private void btnGuardarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarBMouseClicked
+
+        // aca seria solo sincronizar??
+    }//GEN-LAST:event_btnGuardarBMouseClicked
+
+    private void crearTablaA(int filas, int columnas) {
         try {
             matrizA = new Matriz(filas, columnas);
             int filasA = matrizA.getCantidadFilas();
@@ -397,27 +452,14 @@ public class GUI5 extends javax.swing.JFrame {
             Random aleatorio = new Random();
             DefaultTableModel modelA = (DefaultTableModel) jTableA.getModel();
             modelA.getDataVector().removeAllElements();
+            modelA.setRowCount(filasA);
+            modelA.setColumnCount(columnasA);
 
-            //CON ESTA YA AÑADIMOS 1 COLUMNA DE ENCABEZADO
-            modelA.addColumn("Posiciones");
-            for (int f = 1; f <= columnasA; f++) {
-                // CON ESTA AÑADIMOS EL RESTO DE COLUMNAS
-                modelA.addColumn(f);
-            }
-            //CREAMOS VECTOR PARA LLENAR TABLA VACIA CON VALORES DE POSICIONES EN FILAS
-            String[] x = new String[columnasA + 1];
-            for (int i = 0; i < filasA; i++) {
-                modelA.addRow(x);
-            }
-            // CREAMOS LA COLUMNA 0 CON VALORES DE POSICIONES
-            for (int i = 0; i < filasA; i++) {
-                modelA.setValueAt(i + 1, i, 0); //SE PINTA LA COLUMNA 0 CON LAS POSICIONES DESDE LA 1 HASTA LA i
-            }
-
-            for (int f = 0; f < filasA + 1; f++) {
-                for (int c = 1; c < columnasA + 1; c++) {
-                    int valor = aleatorio.nextInt(100); // SE GENERA VALOR ALEATORIO ENTRE 0-100
-                    jTableA.setValueAt(valor, f, c); // SE PINTA LA MATRIZ A EN LA JTABLEA
+            for (int f = 0; f < filasA; f++) {
+                for (int c = 0; c < columnasA; c++) {
+                    int valor = aleatorio.nextInt(100);
+                    matrizA.setElemento(f, c, valor);
+                    jTableA.setValueAt(valor, f, c);
                 }
             }
             jTableA.setEnabled(false);
@@ -429,7 +471,6 @@ public class GUI5 extends javax.swing.JFrame {
     // si se usa este metodo, llamar despues sincronizarTablaA
     private void crearTablaAconZeros(int filas, int columnas) {
         try {
-
             matrizA = new Matriz(filas, columnas); // Declaro una matrizA de la clase Matriz
             int filasA = matrizA.getCantidadFilas(); // Obtengo el atributo filas de la clase Matriz
             int columnasA = matrizA.getCantidadColumnas(); // Obtengo el atributo columnas de la clase Matriz
@@ -437,25 +478,13 @@ public class GUI5 extends javax.swing.JFrame {
             DefaultTableModel modelA = (DefaultTableModel) jTableA.getModel();
 
             modelA.getDataVector().removeAllElements();
-            //CON ESTA YA AÑADIMOS 1 COLUMNA DE ENCABEZADO
-            modelA.addColumn("Posiciones");
-            for (int f = 1; f <= columnasA; f++) {
-                // CON ESTA AÑADIMOS EL RESTO DE COLUMNAS
-                modelA.addColumn(f);
-            }
-            //CREAMOS VECTOR PARA LLENAR TABLA VACIA CON VALORES DE POSICIONES EN FILAS
-            String[] x = new String[columnasA + 1];
-            for (int i = 0; i < filasA; i++) {
-                modelA.addRow(x);
-            }
-            // CREAMOS LA COLUMNA 0 CON VALORES DE POSICIONES
-            for (int i = 0; i < filasA; i++) {
-                modelA.setValueAt(i + 1, i, 0); //SE PINTA LA COLUMNA 0 CON LAS POSICIONES DESDE LA 1 HASTA LA i
-            }
+            modelA.setRowCount(filasA);
+            modelA.setColumnCount(columnasA);
 
-            for (int f = 0; f < filasA+1; f++) {
-                for (int c = 1; c < columnasA+1; c++) {
+            for (int f = 0; f < filasA; f++) {
+                for (int c = 0; c < columnasA; c++) {
                     int valor = 0;
+                    matrizA.setElemento(f, c, valor);
                     jTableA.setValueAt(valor, f, c);
                 }
             }
@@ -473,27 +502,14 @@ public class GUI5 extends javax.swing.JFrame {
             Random aleatorio = new Random();
             DefaultTableModel modelB = (DefaultTableModel) jTableB.getModel();
             modelB.getDataVector().removeAllElements();
+            modelB.setRowCount(filasB);
+            modelB.setColumnCount(columnasB);
 
-            //CON ESTA YA AÑADIMOS 1 COLUMNA DE ENCABEZADO
-            modelB.addColumn("Posiciones");
-            for (int f = 1; f <= columnasB; f++) {
-                // CON ESTA AÑADIMOS EL RESTO DE COLUMNAS
-                modelB.addColumn(f);
-            }
-            //CREAMOS VECTOR PARA LLENAR TABLA VACIA CON VALORES DE POSICIONES EN FILAS
-            String[] x = new String[columnasB + 1];
-            for (int i = 0; i < filasB; i++) {
-                modelB.addRow(x);
-            }
-            // CREAMOS LA COLUMNA 0 CON VALORES DE POSICIONES
-            for (int i = 0; i < filasB; i++) {
-                modelB.setValueAt(i + 1, i, 0); //SE PINTA LA COLUMNA 0 CON LAS POSICIONES DESDE LA 1 HASTA LA i
-            }
-
-            for (int f = 0; f < filasB + 1; f++) {
-                for (int c = 1; c < columnasB + 1; c++) {
+            for (int f = 0; f < filasB; f++) {
+                for (int c = 0; c < columnasB; c++) {
                     int valor = aleatorio.nextInt(100); // SE GENERA VALOR ALEATORIO ENTRE 0-100
-                    jTableB.setValueAt(valor, f, c); // SE PINTA LA MATRIZ A EN LA JTABLEA
+                    matrizB.setElemento(f, c, valor);
+                    jTableB.setValueAt(valor, f, c); // SE PINTA LA MATRIZ A EN LA JTABLEB
                 }
             }
             jTableB.setEnabled(false);
@@ -512,25 +528,13 @@ public class GUI5 extends javax.swing.JFrame {
             DefaultTableModel modelB = (DefaultTableModel) jTableB.getModel();
 
             modelB.getDataVector().removeAllElements();
-            //CON ESTA YA AÑADIMOS 1 COLUMNA DE ENCABEZADO
-            modelB.addColumn("Posiciones");
-            for (int f = 1; f <= columnasB; f++) {
-                // CON ESTA AÑADIMOS EL RESTO DE COLUMNAS
-                modelB.addColumn(f);
-            }
-            //CREAMOS VECTOR PARA LLENAR TABLA VACIA CON VALORES DE POSICIONES EN FILAS
-            String[] x = new String[columnasB + 1];
-            for (int i = 0; i < filasB; i++) {
-                modelB.addRow(x);
-            }
-            // CREAMOS LA COLUMNA 0 CON VALORES DE POSICIONES
-            for (int i = 0; i < filasB; i++) {
-                modelB.setValueAt(i + 1, i, 0); //SE PINTA LA COLUMNA 0 CON LAS POSICIONES DESDE LA 1 HASTA LA i
-            }
+            modelB.setRowCount(filasB);
+            modelB.setColumnCount(columnasB);
 
-            for (int f = 0; f < filasB+1; f++) {
-                for (int c = 1; c < columnasB+1; c++) {
+            for (int f = 0; f < filasB; f++) {
+                for (int c = 1; c < columnasB; c++) {
                     int valor = 0;
+                    matrizB.setElemento(f, c, valor);
                     jTableA.setValueAt(valor, f, c);
                 }
             }
@@ -546,10 +550,10 @@ public class GUI5 extends javax.swing.JFrame {
             int columnasA = matrizA.getCantidadColumnas();
             DefaultTableModel model = (DefaultTableModel) jTableA.getModel();
 
-            for (int f = 1; f <= filasA; f++) {
-                for (int c = 1; c <= columnasA; c++) {
+            for (int f = 0; f <= filasA; f++) {
+                for (int c = 0; c <= columnasA; c++) {
                     int valor = (int) jTableA.getValueAt(f, c);
-                    matrizA.setElemento(f-1, c-1, valor);
+                    matrizA.setElemento(f, c, valor);
                 }
             }
             jTableA.setEnabled(false);
@@ -594,147 +598,6 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
-    private void sumarMatrices(int[][] matrizA, int[][] matrizB ) throws Exception {
-        
-        int filasA = this.matrizA.getCantidadFilas();
-        int columnasA = this.matrizA.getCantidadColumnas();
-        int filasB = this.matrizB.getCantidadFilas();
-        int columnasB = this.matrizB.getCantidadColumnas();
-        
-        if (filasA != filasB || columnasA != columnasB) {
-            throw new Exception("Las matrices no son del mismo Orden");
-        }
-        Matriz matrizC = new Matriz(filasA, columnasA);
-        
-        for (int f = 0; f < filasA; f++) {
-            for (int c = 0; c < columnasA; c++) {
-                int valor = (int) jTableA.getValueAt(f+1, c+1) + (int) jTableB.getValueAt(f+1, c+1);
-//                        this.matrizA.getElemento(f, c) + this.matrizB.getElemento(f, c);
-                matrizC.setElemento(f, c, valor);
-            }
-        }
-        sincronizarTablaC();
-//        return aux;
-    } //ok
-//
-//    public Matriz restarMatrices(Matriz objetoMatriz) throws Exception {
-//        
-//        
-//        
-//        if (this.cantidadFilas != objetoMatriz.cantidadFilas || this.cantidadColumnas != objetoMatriz.cantidadColumnas) {
-//            throw new Exception("Las matrices no son del mismo Orden");
-//        }
-//        Matriz aux = new Matriz(this.cantidadFilas, this.cantidadColumnas);
-//        for (int f = 0; f < this.cantidadFilas; f++) {
-//            for (int c = 0; c < this.cantidadColumnas; c++) {
-//                int valor = this.getElemento(f, c) - objetoMatriz.getElemento(f, c);
-//                aux.setElemento(f, c, valor);
-//            }
-//        }
-//        return aux;
-//    } //ok
-//
-//    public Matriz Multiplicar(Matriz objetoMatriz) throws Exception {
-//        if (this.cantidadColumnas != objetoMatriz.cantidadFilas) {
-//            throw new Exception("El número de columnas da matriz A debe ser igual al número de filas de la matriz B");
-//        }
-//        //las filas de la primera Matriz son multiplicados por las columnas de la segunda matriz
-//        Matriz aux = new Matriz(this.cantidadFilas, objetoMatriz.cantidadColumnas);
-//        for (int f = 0; f < cantidadFilas; f++) {
-//            for (int c = 0; c < objetoMatriz.cantidadColumnas; c++) {
-//                int valor = 0;
-//                for (int k = 0; k < cantidadFilas; k++) {
-//                    valor += (this.getElemento(f, k) * objetoMatriz.getElemento(k, c));
-//                }
-//                aux.objetoMatriz[f][c] = valor;
-//            }
-//        }
-//        return aux;
-//    }
-//
-//    public Matriz MultiplicarPunto(Matriz objetoMatriz) throws Exception {
-//        if ((this.cantidadFilas != objetoMatriz.cantidadFilas) || (this.cantidadColumnas != objetoMatriz.cantidadColumnas)){
-//            throw new Exception("El número de elementos de la matriz A debe ser igual al número de elementos de la matriz B");
-//        }
-//        //Se multiplica elemento a elemento de la matriz A por la matriz B
-//        Matriz aux = new Matriz(this.cantidadFilas, objetoMatriz.cantidadColumnas);
-//        for (int f = 0; f < cantidadFilas; f++) {
-//            for (int c = 0; c < objetoMatriz.cantidadColumnas; c++) { 
-//                  aux.objetoMatriz[f][c]  = (this.getElemento(f, c) * objetoMatriz.getElemento(f, c));             
-//            }
-//        }
-//        return aux;
-//    }
-//    
-//    
-//    
-//    
-//    
-//    //+ calcularPotencia(exponente >=0 : int) : Matriz
-//    private Matriz Potencia(matrizA, int filasA, int columnasA, int exponente) {
-//        matrizA = new Matriz(filasA, columnasA);
-//        int _filasA = this.matrizA.getCantidadFilas();
-//        int _columnasA = this.matrizA.getCantidadColumnas();
-//
-//        //Valida si el exponente es negativo
-//        if (exponente < 0) {
-//            throw new Exception("Exponente no es mayor o igual a cero!");
-//        }
-//        // valida si la matriz es cuadrada
-//        if (cantidadFilas != cantidadColumnas) {
-//            throw new Exception("La matriz no es cuadrada");
-//        }
-//        //crea un objeto
-//        Matriz aux = new Matriz(cantidadFilas, cantidadColumnas);
-//        //si el exponente es = cero el resultado es 1
-//        switch (exponente) {
-//            //si el exponente es igual a 1 el resultado es la base
-//            case 0:
-//                for (int f = 0; f < cantidadFilas; f++) {
-//                    for (int c = 0; c < cantidadColumnas; c++) {
-//                        if (f == c) {
-//                            aux.objetoMatriz[f][c] = 1;
-//                        } else {
-//                            aux.objetoMatriz[f][c] = 0;
-//                        }
-//                    }
-//                }
-//                return aux;
-//            case 1:
-//                return this;
-//            default:
-//                for (int f = 0; f < cantidadFilas; f++) {
-//                    for (int c = 0; c < cantidadColumnas; c++) {
-//                        aux.objetoMatriz[f][c] = this.objetoMatriz[f][c];
-//                    }
-//                }
-//                for (int f = 0; f < exponente - 1; f++) {
-//                    aux = aux.Multiplicar(this);
-//                }
-//                return aux;
-//        }
-//    }
-//    private Matriz Transpuesta(Matriz MatrizA, int filasA, int columnasA) throws Exception {
-//
-//        matrizA = new Matriz(filasA, columnasA);
-//        int _filasA = this.matrizA.getCantidadFilas();
-//        int _columnasA = this.matrizA.getCantidadColumnas();
-//
-//        if (filasA != columnasA) {
-//            throw new Exception("La matriz no es cuadrada");
-//        } else {
-//            Matriz aux = new Matriz(_filasA, _columnasA);
-//
-//            for (int f = 0; f < _filasA; f++) {
-//                for (int c = 0; c < _columnasA; c++) {
-//                    int valor = matrizA.getElemento(f, c);
-//                    aux.setElemento(c, f, valor);
-//                }
-//            }
-//            return aux;
-//        }
-//
-//    }
     public boolean esNumero(String numero) {
         for (int i = 0; i < numero.length(); i++) {
             if (!Character.isDigit(numero.charAt(i))) {
@@ -797,6 +660,7 @@ public class GUI5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelExponente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -807,6 +671,7 @@ public class GUI5 extends javax.swing.JFrame {
     private javax.swing.JLabel lblFilasC;
     private javax.swing.JTextField txtColumnasA;
     private javax.swing.JTextField txtColumnasB;
+    private javax.swing.JTextField txtExponente;
     private javax.swing.JTextField txtFilasA;
     private javax.swing.JTextField txtFilasB;
     // End of variables declaration//GEN-END:variables
