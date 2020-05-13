@@ -358,7 +358,11 @@ public class GUI5 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // crear matriz A e imprimir en jTableA
+    
+    /**Metodo para crear matriz "A" e imprimir en jTableA
+     * 
+     * @param evt al dar click sobre el boton "crearA" se crean la matrizA e imprime los valores en la JTableA
+     */
     private void btnCrearAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearAMouseClicked
 
         btnGuardarA.setVisible(true);
@@ -389,7 +393,11 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCrearAMouseClicked
 
-    // crear matriz B e imprimir en jTableB
+    
+    /**Metodo para crear matriz "B" e imprimir en jTableB
+     * 
+     * @param evt al dar click sobre el boton "crearB" se crean la matrizB e imprime los valores en la JTableB
+     */
     private void btnCrearBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearBMouseClicked
 
         btnGuardarB.setVisible(true);
@@ -418,68 +426,93 @@ public class GUI5 extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnCrearBMouseClicked
+    
+    /** Funcion que determina si las matrices A & B estan vacias o NO.
+     * 
+     * @return Devuelve un valor true si al menos una de las matrices aun no se ha creado.
+     */
+    public boolean checkEmptyMatriz() {
+        boolean isNullBothMatriz = matrizA == null || matrizB == null;
+        if (isNullBothMatriz) {
+            isNullBothMatriz = true;
+        }
+        return isNullBothMatriz;
+    }
 
-
+    /**Metodo para realizar alguna de las operaciones definidas para las matrices
+     * 
+     * @param evt al dar click sobre el boton "Calcular" se ejecutan las instrucciones para operar
+     */
     private void btnCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseClicked
-        
+
+        if (checkEmptyMatriz()) {
+            JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE CREAR AMBAS MATRICES PARA PODER OPERARLAS");
+        }
         int filasA = matrizA.getCantidadFilas();
         int columnasA = matrizA.getCantidadColumnas();
         int filasB = matrizB.getCantidadFilas();
         int columnasB = matrizB.getCantidadColumnas();
         sincronizarTablaA();
         sincronizarTablaB();
-//        DefaultTableModel modelA = (DefaultTableModel) jTableA.getModel();
+
         try {
             String operacion = String.valueOf(jComboBoxOperaciones.getSelectedItem());
 
-            if (operacion.equals("A+B")) {
-                if((matrizA==null) || (matrizB==null)){                   
-                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR AMBAS MATRICES PARA PODER REALIZAR ESTA OPERACION");
-                }else{
+            switch (operacion) {
+                case "A+B":
                     if (filasA != filasB || columnasA != columnasB) {
                         JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER SUMARLAS");
                     }
                     matrizC = Matriz.sumar(matrizA, matrizB);
+                    break;
+                case "A-B":
+                    if (filasA != filasB || columnasA != columnasB) {
+                        JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER RESTARLAS");
+                    }
+                    matrizC = Matriz.restar(matrizA, matrizB);
+                    break;
+                case "A*B":
+                    if (filasA != filasB || columnasA != columnasB) {
+                        JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER MULTIPLICAR LOS ELEMENTOS");
+                    }
+                    matrizC = Matriz.multiplicacionPunto(matrizA, matrizB);
+                    break;
+                case "AxB":
+                    if (columnasA != filasB) {
+                        JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, EL #COLUMNAS DE LA MATRIZ 'A' DEBE SER IGUAL AL #FILAS DE LA MATRIZ 'B' PARA PODER MULTIPLICARLAS MATRICIALMENTE");
+                    }
+                    matrizC = Matriz.multiplicacionMatricial(matrizA, matrizB);
+                    break;
+                case "A(traspuesta)":
+                    matrizC = Matriz.traspuesta(matrizA);
+                    break;
+                case "B(traspuesta)":
+                    matrizC = Matriz.traspuesta(matrizB);
+                    break;
+                case "A^n": {
+                    jLabelExponente.setVisible(true);
+                    txtExponente.setVisible(true);
+                    if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
+                        JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
+                        this.txtExponente.setText(String.valueOf(""));
+                    }
+                    int exponente = Integer.parseInt((txtExponente.getText()));
+                    matrizC = Matriz.Potencia(matrizA, exponente);
+                    break;
                 }
-                
-
-            } else if (operacion.equals("A-B")) {
-                if (filasA != filasB || columnasA != columnasB) {
-                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER RESTARLAS");
+                case "B^n": {
+                    jLabelExponente.setVisible(true);
+                    txtExponente.setVisible(true);
+                    if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
+                        JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
+                        this.txtExponente.setText(String.valueOf(""));
+                    }
+                    int exponente = Integer.parseInt((txtExponente.getText()));
+                    matrizC = Matriz.Potencia(matrizB, exponente);
+                    break;
                 }
-                matrizC = Matriz.restar(matrizA, matrizB);
-            } else if (operacion.equals("A*B")) {
-                if (filasA != filasB || columnasA != columnasB) {
-                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER MULTIPLICAR LOS ELEMENTOS");
-                }
-                matrizC = Matriz.multiplicacionPunto(matrizA, matrizB);
-            } else if (operacion.equals("AxB")) {
-                if (filasA != filasB || columnasA != columnasB) {
-                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, EL #COLUMNAS DE LA MATRIZ 'A' DEBE SER IGUAL AL #FILAS DE LA MATRIZ 'B' PARA PODER MULTIPLICARLAS MATRICIALMENTE");
-                }
-                matrizC = Matriz.multiplicacionMatricial(matrizA, matrizB);
-            } else if (operacion.equals("A(traspuesta)")) {
-                matrizC = Matriz.traspuesta(matrizA);
-            } else if (operacion.equals("B(traspuesta)")) {
-                matrizC = Matriz.traspuesta(matrizB);
-            } else if (operacion.equals("A^n")) {
-                jLabelExponente.setVisible(true);
-                txtExponente.setVisible(true);
-                if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
-                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
-                    this.txtExponente.setText(String.valueOf(""));
-                }
-                int exponente = Integer.parseInt((txtExponente.getText()));
-                matrizC = Matriz.Potencia(matrizA, exponente);
-            } else if (operacion.equals("B^n")) {
-                jLabelExponente.setVisible(true);
-                txtExponente.setVisible(true);
-                if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
-                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
-                    this.txtExponente.setText(String.valueOf(""));
-                }
-                int exponente = Integer.parseInt((txtExponente.getText()));
-                matrizC = Matriz.Potencia(matrizB, exponente);
+                default:
+                    break;
             }
             sincronizarTablaC();
             lblFilasC.setText(String.valueOf(matrizC.getCantidadFilas()));
@@ -491,7 +524,10 @@ public class GUI5 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCalcularMouseClicked
 
-
+    /**Metodo para Sincronizar las matrizA con la jTableA en caso que se hagan cambios
+     * 
+     * @param evt al dar click sobre el boton "GuardarA" se sobre escribe en la matrizA lo que tenga la jTableA
+     */
     private void btnGuardarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarAMouseClicked
 
         sincronizarTablaA();
@@ -499,6 +535,10 @@ public class GUI5 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnGuardarAMouseClicked
 
+    /**Metodo para Sincronizar las matrizB con la jTableB en caso que se hagan cambios
+     * 
+     * @param evt al dar click sobre el boton "GuardarA" se sobre escribe en la matrizB lo que tenga la jTableB
+     */
     private void btnGuardarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarBMouseClicked
 
         sincronizarTablaB();
@@ -506,6 +546,10 @@ public class GUI5 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnGuardarBMouseClicked
 
+    /**Metodo para limpiar todos los campos e iniciar desde cero
+     * 
+     * @param evt al dar click sobre el boton "Reiniciar" se limpian todos los campos del GUI5
+     */
     private void btnResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResetMouseClicked
 
         matrizA = null;
@@ -531,12 +575,20 @@ public class GUI5 extends javax.swing.JFrame {
         btnGuardarB.setVisible(false);
         jLabelExponente.setVisible(false);
         txtExponente.setVisible(false);
-
+        txtFilasA.setText("");
+        txtFilasB.setText("");
+        txtColumnasA.setText("");
+        txtColumnasB.setText("");
         lblFilasC.setText(String.valueOf(""));
         lblColumnasC.setText(String.valueOf(""));
 
     }//GEN-LAST:event_btnResetMouseClicked
 
+    /**Metodo para crear la jTableA con valores aleatorios entre el 0 y 100.
+     * 
+     * @param filas parametro que da el numero de filas con que se creara la jTableA
+     * @param columnas parametro que da el numero de columnas con que se creara la jTableA
+     */
     private void crearTablaA(int filas, int columnas) {
         try {
             matrizA = new Matriz(filas, columnas);
@@ -561,7 +613,11 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
-    // si se usa este metodo, llamar despues sincronizarTablaA
+    /**Metodo para crar jTableA con ceros y dejar activa para que el usuario ingrese los valores que desee.
+     * 
+     * @param filas parametro que da el numero de filas con que se creara la jTableA
+     * @param columnas parametro que da el numero de columnas con que se creara la jTableA
+     */
     private void crearTablaAconZeros(int filas, int columnas) {
         try {
             matrizA = new Matriz(filas, columnas); // Declaro una matrizA de la clase Matriz
@@ -587,6 +643,11 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
+    /**Metodo para crear la jTableB con valores aleatorios entre el 0 y 100.
+     * 
+     * @param filas parametro que da el numero de filas con que se creara la jTableB
+     * @param columnas parametro que da el numero de columnas con que se creara la jTableB
+     */
     private void crearTablaB(int filas, int columnas) {
         try {
             matrizB = new Matriz(filas, columnas);
@@ -611,7 +672,11 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
-    // si se usa este metodo, llamar despues sincronizarTablaB
+    /**Metodo para crar jTableB con ceros y dejar activa para que el usuario ingrese los valores que desee.
+     * 
+     * @param filas parametro que da el numero de filas con que se creara la jTableB
+     * @param columnas parametro que da el numero de columnas con que se creara la jTableB
+     */
     private void crearTablaBconZeros(int filas, int columnas) {
         try {
             matrizB = new Matriz(filas, columnas); // Declaro una matrizA de la clase Matriz
@@ -637,6 +702,9 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
+    /**Metodo tipo void para Sincronicar la jTableA
+     * 
+     */
     private void sincronizarTablaA() {
         try {
             int filasA = matrizA.getCantidadFilas();
@@ -655,6 +723,9 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
+    /**Metodo tipo void para Sincronicar la jTableB
+     * 
+     */
     private void sincronizarTablaB() {
         try {
             int filasB = matrizB.getCantidadFilas();
@@ -673,7 +744,9 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
-    // creo que hay que cambiar este metodo porque no esta imprimiendo la tabla
+    /**Metodo tipo void para Sincronicar la jTableC
+     * 
+     */
     private void sincronizarTablaC() {
         try {
             int filasC = matrizC.getCantidadFilas();
@@ -693,6 +766,11 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
+    /**Metodo que determinar si el dato de un text del GUI5 es un valor numerico
+     * 
+     * @param numero valor que tiene el txt en el GUI5
+     * @return 
+     */
     public boolean esNumero(String numero) {
         for (int i = 0; i < numero.length(); i++) {
             if (!Character.isDigit(numero.charAt(i))) {
@@ -701,7 +779,7 @@ public class GUI5 extends javax.swing.JFrame {
         }
         return true;
     }
-    
+
     /**
      * @param args the command line arguments
      */

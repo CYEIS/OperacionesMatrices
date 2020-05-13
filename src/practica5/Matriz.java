@@ -17,6 +17,12 @@ public class Matriz {
     private int[][] objetoMatriz = null;
 
     //metodos
+    /**
+     * 
+     * @param filas
+     * @param Columnas
+     * @throws Exception 
+     */
     public Matriz(int filas, int Columnas) throws Exception {
         if (filas <= 0 || Columnas <= 0) {
             throw new Exception("La cantidad de filas o columnas no puede ser < 0");
@@ -25,15 +31,30 @@ public class Matriz {
         this.cantidadFilas = filas;
         this.cantidadColumnas = Columnas;
     }
-
+    
+    /**
+     *
+     * @return
+     */
     public int getCantidadFilas() {
         return cantidadFilas;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getCantidadColumnas() {
         return cantidadColumnas;
     }
 
+    /**
+     * 
+     * @param filas
+     * @param columnas
+     * @return
+     * @throws Exception 
+     */
     public int getElemento(int filas, int columnas) throws Exception {
         if (filas < 0 || filas >= cantidadFilas) {
             throw new Exception("Filas fuera de rango válido");
@@ -44,6 +65,13 @@ public class Matriz {
         return objetoMatriz[filas][columnas];
     }
 
+    /**
+     * 
+     * @param filas
+     * @param columnas
+     * @param elemento
+     * @throws Exception 
+     */
     public void setElemento(int filas, int columnas, int elemento) throws Exception {
         if (filas < 0 || filas >= cantidadFilas) {
             throw new Exception("Filas fuera de rango válido");
@@ -65,8 +93,14 @@ public class Matriz {
 //        return salida;
 //    }
 
-    
     //  METODOS CREADOS EN LA CLASE MATRIZ
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     * @throws Exception 
+     */
     public static Matriz sumar(Matriz a, Matriz b) throws Exception {
         int filas = a.getCantidadFilas();
         int columnas = a.getCantidadColumnas();
@@ -84,6 +118,13 @@ public class Matriz {
         return result;
     }
 
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     * @throws Exception 
+     */
     public static Matriz restar(Matriz a, Matriz b) throws Exception {
         int filasA = a.getCantidadFilas();
         int columnasA = a.getCantidadColumnas();
@@ -100,6 +141,13 @@ public class Matriz {
         return result;
     }
 
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     * @throws Exception 
+     */
     public static Matriz multiplicacionPunto(Matriz a, Matriz b) throws Exception {
         int filasA = a.getCantidadFilas();
         int columnasA = a.getCantidadColumnas();
@@ -120,6 +168,13 @@ public class Matriz {
         return result;
     }
 
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     * @throws Exception 
+     */
     public static Matriz multiplicacionMatricial(Matriz a, Matriz b) throws Exception {
         int filasA = a.getCantidadFilas();
         int columnasA = a.getCantidadColumnas();
@@ -143,6 +198,12 @@ public class Matriz {
         return result;
     }
 
+    /**
+     * 
+     * @param t
+     * @return
+     * @throws Exception 
+     */
     public static Matriz traspuesta(Matriz t) throws Exception {
 
         int filasT = t.getCantidadFilas();
@@ -164,6 +225,13 @@ public class Matriz {
 
     }
 
+    /**
+     * 
+     * @param a
+     * @param exponente
+     * @return
+     * @throws Exception 
+     */
     public static Matriz Potencia(Matriz a, int exponente) throws Exception {
 
         //Valida si el exponente es negativo
@@ -186,37 +254,6 @@ public class Matriz {
                 result.objetoMatriz[f][c] = valor;
             }
         }
-        
-//        switch (exponente) {
-//            //si el exponente es igual a 1 el resultado es la base
-//            case 0:
-//                for (int f = 0; f < filasA; f++) {
-//                    for (int c = 0; c < columnasA; c++) {
-//                        if (f == c) {
-//                            result.objetoMatriz[f][c] = 1;
-//                        } else {
-//                            result.objetoMatriz[f][c] = 0;
-//                        }
-//                    }
-//                }
-//                return result;
-//            case 1:
-//                return a;
-//            default:
-//
-//                for (int f = 0; f < filasA; f++) {
-//                    for (int c = 0; c < columnasA; c++) {
-//                        int valor = (a.getElemento(f, c)) ^ (exponente);
-//                        result.objetoMatriz[f][c] = valor;
-//                    }
-//                }
-//                for (int f = 0; f < filasA; f++) {
-//                    for (int c = 0; c < columnasA; c++) {
-//                        double valor = Math.pow(a.getElemento(f, c), exponente);
-//                        result.objetoMatriz[f][c] = Integer.parseInt(valor);
-//                    }
-//                }
-
         return result;
     }
 //HASTA ACA LLEGAN TODOS LOS METODOS DE LA CLASE "MATRIZ"
