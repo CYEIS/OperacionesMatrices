@@ -5,7 +5,7 @@
  */
 package practica5;
 
-/**
+/** SE CREA LA CLASE MATRIZ
  *
  * @author cristianyeis
  */
@@ -65,65 +65,14 @@ public class Matriz {
 //        return salida;
 //    }
 
-    //+ calcularPotencia(exponente >=0 : int) : Matriz
-//    public Matriz Potencia(int exponente) throws Exception {
-//        //Valida si el exponente es negativo
-//        if (exponente < 0) {
-//            throw new Exception("Exponente no es mayor o igual a cero!");
-//        }
-//        // valida si la matriz es cuadrada
-//        if (cantidadFilas != cantidadColumnas) {
-//            throw new Exception("La matriz no es cuadrada");
-//        }
-//        //crea un objeto
-//        Matriz aux = new Matriz(cantidadFilas, cantidadColumnas);
-//        //si el exponente es = cero el resultado es 1
-//        switch (exponente) {
-//            //si el exponente es igual a 1 el resultado es la base
-//            case 0:
-//                for (int f = 0; f < cantidadFilas; f++) {
-//                    for (int c = 0; c < cantidadColumnas; c++) {
-//                        if (f == c) {
-//                            aux.objetoMatriz[f][c] = 1;
-//                        } else {
-//                            aux.objetoMatriz[f][c] = 0;
-//                        }
-//                    }
-//                }
-//                return aux;
-//            case 1:
-//                return this;
-//            default:
-//                for (int f = 0; f < cantidadFilas; f++) {
-//                    for (int c = 0; c < cantidadColumnas; c++) {
-//                        aux.objetoMatriz[f][c] = this.objetoMatriz[f][c];
-//                    }
-//                }
-//                for (int f = 0; f < exponente - 1; f++) {
-//                    aux = aux.Multiplicar(this);
-//                }
-//                return aux;
-//        }
-//    }
     
-//    public Matriz multiplicarK(int constante) throws Exception {
-//        Matriz aux = new Matriz(this.cantidadFilas, this.cantidadColumnas);
-//        for (int f = 0; f < this.cantidadFilas; f++) {
-//            for (int c = 0; c < cantidadColumnas; c++) {
-//                aux.objetoMatriz[f][c] = this.objetoMatriz[f][c] * constante;
-//            }
-//        }
-//        return aux;
-//    }
     //  METODOS CREADOS EN LA CLASE MATRIZ
     public static Matriz sumar(Matriz a, Matriz b) throws Exception {
         int filas = a.getCantidadFilas();
         int columnas = a.getCantidadColumnas();
-        
-        System.out.println(String.format("%s %s", filas, columnas));
-        
+
         if (filas != b.getCantidadFilas() || columnas != b.getCantidadColumnas()) {
-            throw new Exception("Las matrices no son del mismo Orden");
+            throw new Exception("Las matrices NO son del mismo Orden");
         }
         Matriz result = new Matriz(filas, columnas);
         for (int f = 0; f < filas; f++) {
@@ -139,7 +88,7 @@ public class Matriz {
         int filasA = a.getCantidadFilas();
         int columnasA = a.getCantidadColumnas();
         if (filasA != b.getCantidadFilas() || columnasA != b.getCantidadColumnas()) {
-            throw new Exception("Las matrices no son del mismo Orden");
+            throw new Exception("Las matrices NO son del mismo Orden");
         }
         Matriz result = new Matriz(filasA, columnasA);
         for (int f = 0; f < filasA; f++) {
@@ -216,7 +165,7 @@ public class Matriz {
     }
 
     public static Matriz Potencia(Matriz a, int exponente) throws Exception {
-        
+
         //Valida si el exponente es negativo
         if (exponente < 0) {
             throw new Exception("Exponente NO es mayor o igual a cero!");
@@ -230,34 +179,46 @@ public class Matriz {
         //crea un objeto
         Matriz result = new Matriz(filasA, columnasA);
         //si el exponente es = cero el resultado es 1
-        switch (exponente) {
-            //si el exponente es igual a 1 el resultado es la base
-            case 0:
-                for (int f = 0; f < filasA; f++) {
-                    for (int c = 0; c < columnasA; c++) {
-                        if (f == c) {
-                            result.objetoMatriz[f][c] = 1;
-                        } else {
-                            result.objetoMatriz[f][c] = 0;
-                        }
-                    }
-                }
-                return result;
-            case 1:
-                return a;
-            default:
+
+        for (int f = 0; f < filasA; f++) {
+            for (int c = 0; c < columnasA; c++) {
+                int valor = (int) Math.pow(a.getElemento(f, c), exponente);
+                result.objetoMatriz[f][c] = valor;
+            }
+        }
+        
+//        switch (exponente) {
+//            //si el exponente es igual a 1 el resultado es la base
+//            case 0:
 //                for (int f = 0; f < filasA; f++) {
 //                    for (int c = 0; c < columnasA; c++) {
-//                        result[f][c] = a[f][c];
+//                        if (f == c) {
+//                            result.objetoMatriz[f][c] = 1;
+//                        } else {
+//                            result.objetoMatriz[f][c] = 0;
+//                        }
 //                    }
 //                }
-                for (int f = 0; f < exponente; f++) {
-                    result = multiplicacionPunto(a, a);
-                }
-                return result;
-        }
-    }
+//                return result;
+//            case 1:
+//                return a;
+//            default:
+//
+//                for (int f = 0; f < filasA; f++) {
+//                    for (int c = 0; c < columnasA; c++) {
+//                        int valor = (a.getElemento(f, c)) ^ (exponente);
+//                        result.objetoMatriz[f][c] = valor;
+//                    }
+//                }
+//                for (int f = 0; f < filasA; f++) {
+//                    for (int c = 0; c < columnasA; c++) {
+//                        double valor = Math.pow(a.getElemento(f, c), exponente);
+//                        result.objetoMatriz[f][c] = Integer.parseInt(valor);
+//                    }
+//                }
 
+        return result;
+    }
 //HASTA ACA LLEGAN TODOS LOS METODOS DE LA CLASE "MATRIZ"
 }// Fin de la clase Matriz
 

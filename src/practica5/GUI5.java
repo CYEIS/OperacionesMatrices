@@ -66,16 +66,17 @@ public class GUI5 extends javax.swing.JFrame {
         btnCrearB = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableA = new javax.swing.JTable();
+        btnReset = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableB = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTableC = new javax.swing.JTable();
         btnGuardarA = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
         btnGuardarB = new javax.swing.JButton();
         txtExponente = new javax.swing.JTextField();
         jLabelExponente = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,6 +110,7 @@ public class GUI5 extends javax.swing.JFrame {
 
         jComboBoxOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+B", "A-B", "A*B", "AxB", "A(traspuesta)", "B(traspuesta)", "A^n", "B^n" }));
 
+        btnCalcular.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         btnCalcular.setText("Calcular");
         btnCalcular.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,6 +118,7 @@ public class GUI5 extends javax.swing.JFrame {
             }
         });
 
+        btnCrearA.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnCrearA.setText("crear A");
         btnCrearA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -123,6 +126,7 @@ public class GUI5 extends javax.swing.JFrame {
             }
         });
 
+        btnCrearB.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnCrearB.setText("crear B");
         btnCrearB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,6 +143,14 @@ public class GUI5 extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTableA);
+
+        btnReset.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        btnReset.setText("Reiniciar");
+        btnReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnResetMouseClicked(evt);
+            }
+        });
 
         jTableB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -160,6 +172,7 @@ public class GUI5 extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(jTableC);
 
+        btnGuardarA.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnGuardarA.setText("Guardar Matriz A");
         btnGuardarA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -167,8 +180,7 @@ public class GUI5 extends javax.swing.JFrame {
             }
         });
 
-        btnReset.setText("Reset");
-
+        btnGuardarB.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnGuardarB.setText("Guardar Matriz B");
         btnGuardarB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,173 +193,166 @@ public class GUI5 extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel11.setText("OPERACIONES MATRICES");
 
+        jLabel12.setText("Matrices de elementos enteros positvos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardarA, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnGuardarA)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnCrearA)))
+                                .addGap(6, 6, 6)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(77, 77, 77))
+                                    .addComponent(jLabelExponente)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(25, 25, 25))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(563, 563, 563)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(btnGuardarB))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(jLabel5))
+                                .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel1))
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel4))
                                     .addGap(26, 26, 26)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnCrearA)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnGuardarB))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGap(66, 66, 66)
-                                                .addComponent(jLabel10))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGap(49, 49, 49)
-                                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(74, 74, 74))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGap(87, 87, 87)
-                                                .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(jLabelExponente)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(jLabel5))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel4))
-                                        .addGap(26, 26, 26)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
                                             .addComponent(txtColumnasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtFilasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnCrearB))
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(22, 22, 22))))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnCrearB))
+                                        .addComponent(txtFilasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(311, 311, 311)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
+                            .addComponent(btnReset)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(83, 83, 83)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(btnReset))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(311, 311, 311)
-                            .addComponent(jLabel11))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnCrearA))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnCrearA)
-                                        .addGap(30, 30, 30))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel6)
-                                                    .addComponent(txtFilasB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(txtColumnasB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel4)))
-                                            .addComponent(btnCrearB))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelExponente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addComponent(btnGuardarA)
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel12)
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnGuardarA)
-                            .addComponent(btnGuardarB))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabelExponente)
+                            .addComponent(jLabel6)
+                            .addComponent(txtFilasB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtColumnasB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(btnCrearB))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCalcular)
-                        .addGap(114, 114, 114)))
+                        .addComponent(btnGuardarB)
+                        .addGap(47, 47, 47)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(49, 49, 49)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel9)
-                                .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(66, 66, 66))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -356,8 +361,8 @@ public class GUI5 extends javax.swing.JFrame {
     // crear matriz A e imprimir en jTableA
     private void btnCrearAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearAMouseClicked
 
-       btnGuardarA.setVisible(true);
-        
+        btnGuardarA.setVisible(true);
+
         jComboBoxOperaciones.setVisible(true);
         btnReset.setVisible(true);
 
@@ -387,7 +392,7 @@ public class GUI5 extends javax.swing.JFrame {
     // crear matriz B e imprimir en jTableB
     private void btnCrearBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearBMouseClicked
 
-       btnGuardarB.setVisible(true);
+        btnGuardarB.setVisible(true);
         jComboBoxOperaciones.setVisible(true);
         btnReset.setVisible(true);
 
@@ -401,7 +406,7 @@ public class GUI5 extends javax.swing.JFrame {
                 case JOptionPane.YES_OPTION:
 //                JOptionPane.showMessageDialog(null, "Si");
                     crearTablaB(Integer.parseInt(txtFilasB.getText()), Integer.parseInt(txtColumnasB.getText())); // SE DEBE LLENAR LA MATRIZ CON # ALEATORIOS
-                     btnCalcular.setVisible(true);
+                    btnCalcular.setVisible(true);
                     break;
                 case JOptionPane.NO_OPTION:
 //                JOptionPane.showMessageDialog(null, "No");
@@ -416,47 +421,69 @@ public class GUI5 extends javax.swing.JFrame {
 
 
     private void btnCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseClicked
+        
+        int filasA = matrizA.getCantidadFilas();
+        int columnasA = matrizA.getCantidadColumnas();
+        int filasB = matrizB.getCantidadFilas();
+        int columnasB = matrizB.getCantidadColumnas();
+        sincronizarTablaA();
+        sincronizarTablaB();
+//        DefaultTableModel modelA = (DefaultTableModel) jTableA.getModel();
         try {
             String operacion = String.valueOf(jComboBoxOperaciones.getSelectedItem());
 
-            System.out.println("operacion: " + operacion);
-//            sincronizarTablaA();
-//            sincronizarTablaB();
-                jLabelExponente.setVisible(true);
-                txtExponente.setVisible(true);
-            
             if (operacion.equals("A+B")) {
-                matrizC = Matriz.sumar(matrizA, matrizB);
+                if((matrizA==null) || (matrizB==null)){                   
+                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR AMBAS MATRICES PARA PODER REALIZAR ESTA OPERACION");
+                }else{
+                    if (filasA != filasB || columnasA != columnasB) {
+                        JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER SUMARLAS");
+                    }
+                    matrizC = Matriz.sumar(matrizA, matrizB);
+                }
+                
+
             } else if (operacion.equals("A-B")) {
+                if (filasA != filasB || columnasA != columnasB) {
+                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER RESTARLAS");
+                }
                 matrizC = Matriz.restar(matrizA, matrizB);
             } else if (operacion.equals("A*B")) {
+                if (filasA != filasB || columnasA != columnasB) {
+                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, LAS MATRICES DEBEN SER DEL MISMO ORDEN PARA PODER MULTIPLICAR LOS ELEMENTOS");
+                }
                 matrizC = Matriz.multiplicacionPunto(matrizA, matrizB);
             } else if (operacion.equals("AxB")) {
+                if (filasA != filasB || columnasA != columnasB) {
+                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, EL #COLUMNAS DE LA MATRIZ 'A' DEBE SER IGUAL AL #FILAS DE LA MATRIZ 'B' PARA PODER MULTIPLICARLAS MATRICIALMENTE");
+                }
                 matrizC = Matriz.multiplicacionMatricial(matrizA, matrizB);
             } else if (operacion.equals("A(traspuesta)")) {
                 matrizC = Matriz.traspuesta(matrizA);
             } else if (operacion.equals("B(traspuesta)")) {
                 matrizC = Matriz.traspuesta(matrizB);
             } else if (operacion.equals("A^n")) {
-                //jComboBoxOperaciones.get
-                
+                jLabelExponente.setVisible(true);
+                txtExponente.setVisible(true);
                 if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
-                JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
-                this.txtExponente.setText(String.valueOf(""));
+                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
+                    this.txtExponente.setText(String.valueOf(""));
                 }
                 int exponente = Integer.parseInt((txtExponente.getText()));
                 matrizC = Matriz.Potencia(matrizA, exponente);
             } else if (operacion.equals("B^n")) {
-//                jLabelExponente.setVisible(true);
-//                txtExponente.setVisible(true);
+                jLabelExponente.setVisible(true);
+                txtExponente.setVisible(true);
                 if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
-                JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
-                this.txtExponente.setText(String.valueOf(""));
+                    JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
+                    this.txtExponente.setText(String.valueOf(""));
                 }
                 int exponente = Integer.parseInt((txtExponente.getText()));
                 matrizC = Matriz.Potencia(matrizB, exponente);
             }
             sincronizarTablaC();
+            lblFilasC.setText(String.valueOf(matrizC.getCantidadFilas()));
+            lblColumnasC.setText(String.valueOf(matrizC.getCantidadColumnas()));
         } catch (Exception ex) {
             System.out.println(String.format("error creando matriz C: %s", ex.getMessage()));
         }
@@ -466,16 +493,49 @@ public class GUI5 extends javax.swing.JFrame {
 
 
     private void btnGuardarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarAMouseClicked
-        btnCalcular.setVisible(true);
+
         sincronizarTablaA();
+        btnCalcular.setVisible(true);
 
     }//GEN-LAST:event_btnGuardarAMouseClicked
 
     private void btnGuardarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarBMouseClicked
-        btnCalcular.setVisible(true);
+
         sincronizarTablaB();
-       
+        btnCalcular.setVisible(true);
+
     }//GEN-LAST:event_btnGuardarBMouseClicked
+
+    private void btnResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResetMouseClicked
+
+        matrizA = null;
+        matrizB = null;
+        matrizC = null;
+
+        DefaultTableModel modelA = (DefaultTableModel) jTableA.getModel();
+        modelA.getDataVector().removeAllElements();
+
+        DefaultTableModel modelB = (DefaultTableModel) jTableB.getModel();
+        modelB.getDataVector().removeAllElements();
+
+        DefaultTableModel modelC = (DefaultTableModel) jTableC.getModel();
+        modelC.getDataVector().removeAllElements();
+
+        jTableA.repaint();
+        jTableB.repaint();
+        jTableC.repaint();
+
+        btnCalcular.setVisible(false);
+        jComboBoxOperaciones.setVisible(false);
+        btnGuardarA.setVisible(false);
+        btnGuardarB.setVisible(false);
+        jLabelExponente.setVisible(false);
+        txtExponente.setVisible(false);
+
+        lblFilasC.setText(String.valueOf(""));
+        lblColumnasC.setText(String.valueOf(""));
+
+    }//GEN-LAST:event_btnResetMouseClicked
 
     private void crearTablaA(int filas, int columnas) {
         try {
@@ -577,8 +637,6 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
-    
-    
     private void sincronizarTablaA() {
         try {
             int filasA = matrizA.getCantidadFilas();
@@ -587,7 +645,7 @@ public class GUI5 extends javax.swing.JFrame {
 
             for (int f = 0; f < filasA; f++) {
                 for (int c = 0; c < columnasA; c++) {
-                    int valor = (int) jTableA.getValueAt(f, c);
+                    int valor = Integer.parseInt((String) jTableA.getValueAt(f, c));
                     matrizA.setElemento(f, c, valor);
                 }
             }
@@ -605,7 +663,7 @@ public class GUI5 extends javax.swing.JFrame {
 
             for (int f = 0; f < filasB; f++) {
                 for (int c = 0; c < columnasB; c++) {
-                    int valor = (int) jTableB.getValueAt(f, c);
+                    int valor = Integer.parseInt((String) jTableB.getValueAt(f, c));
                     matrizB.setElemento(f, c, valor);
                 }
             }
@@ -626,7 +684,7 @@ public class GUI5 extends javax.swing.JFrame {
             for (int f = 0; f < filasC; f++) {
                 for (int c = 0; c < columnasC; c++) {
                     int valor = matrizC.getElemento(f, c);
-                    jTableC.setValueAt(valor, f, c); 
+                    jTableC.setValueAt(valor, f, c);
                 }
             }
             jTableB.setEnabled(false);
@@ -643,7 +701,7 @@ public class GUI5 extends javax.swing.JFrame {
         }
         return true;
     }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -690,6 +748,7 @@ public class GUI5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
