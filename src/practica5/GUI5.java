@@ -26,6 +26,11 @@ public class GUI5 extends javax.swing.JFrame {
         initComponents();
         btnCalcular.setVisible(false);
         jComboBoxOperaciones.setVisible(false);
+        btnGuardarA.setVisible(false);
+        btnGuardarB.setVisible(false);
+        jLabelExponente.setVisible(false);
+        txtExponente.setVisible(false);
+
         btnReset.setVisible(false);
 
     }
@@ -70,6 +75,7 @@ public class GUI5 extends javax.swing.JFrame {
         btnGuardarB = new javax.swing.JButton();
         txtExponente = new javax.swing.JTextField();
         jLabelExponente = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,7 +107,7 @@ public class GUI5 extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel10.setText("Operaciones:");
 
-        jComboBoxOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+B", "A-B", "A*B", "AxB", "A(traspuesta)", "B(traspuesta)", "A^(n)", "B^(n)" }));
+        jComboBoxOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+B", "A-B", "A*B", "AxB", "A(traspuesta)", "B(traspuesta)", "A^n", "B^n" }));
 
         btnCalcular.setText("Calcular");
         btnCalcular.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -172,50 +178,36 @@ public class GUI5 extends javax.swing.JFrame {
 
         jLabelExponente.setText("Potencia a Elevar Matriz [X]^(n)");
 
+        jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel11.setText("OPERACIONES MATRICES");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardarA, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel1))
-                            .addGap(26, 26, 26)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(btnCrearA)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(8, 8, 8))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel4))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtColumnasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFilasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCrearB)))
-                        .addGap(161, 161, 161))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGuardarA, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel1))
+                                    .addGap(26, 26, 26)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtColumnasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtFilasA, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnCrearA)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(8, 8, 8))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -223,41 +215,62 @@ public class GUI5 extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(65, 65, 65)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(66, 66, 66)
                                                 .addComponent(jLabel10))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(44, 44, 44)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabelExponente)))
-                                        .addGap(32, 32, 32))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(49, 49, 49)
+                                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(74, 74, 74))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(88, 88, 88)
-                                        .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(87, 87, 87)
+                                                .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addComponent(jLabelExponente)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(115, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jLabel5))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel4))
+                                        .addGap(26, 26, 26)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtColumnasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFilasB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnCrearB))
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(22, 22, 22))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(83, 83, 83)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
-                .addComponent(btnReset)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFilasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(83, 83, 83)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(btnReset))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(311, 311, 311)
+                            .addComponent(jLabel11))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -265,7 +278,7 @@ public class GUI5 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabel1)
@@ -280,6 +293,8 @@ public class GUI5 extends javax.swing.JFrame {
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(btnCrearA)
@@ -307,17 +322,17 @@ public class GUI5 extends javax.swing.JFrame {
                             .addComponent(btnGuardarB))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
+                        .addGap(159, 159, 159)
                         .addComponent(jLabel10)
-                        .addGap(29, 29, 29)
-                        .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(jLabelExponente)
                         .addGap(18, 18, 18)
+                        .addComponent(jComboBoxOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabelExponente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtExponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(18, 18, 18)
                         .addComponent(btnCalcular)
-                        .addGap(115, 115, 115)))
+                        .addGap(114, 114, 114)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,7 +347,7 @@ public class GUI5 extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addComponent(lblColumnasC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(112, 112, 112))
+                .addGap(66, 66, 66))
         );
 
         pack();
@@ -398,35 +413,46 @@ public class GUI5 extends javax.swing.JFrame {
     private void btnCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseClicked
         try {
             String operacion = String.valueOf(jComboBoxOperaciones.getSelectedItem());
-           
+
             System.out.println("operacion: " + operacion);
 //            sincronizarTablaA();
 //            sincronizarTablaB();
-
-            if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
+                jLabelExponente.setVisible(true);
+                txtExponente.setVisible(true);
+            
+            if (operacion.equals("A+B")) {
+                matrizC = Matriz.sumar(matrizA, matrizB);
+            } else if (operacion.equals("A-B")) {
+                matrizC = Matriz.restar(matrizA, matrizB);
+            } else if (operacion.equals("A*B")) {
+                matrizC = Matriz.multiplicacionPunto(matrizA, matrizB);
+            } else if (operacion.equals("AxB")) {
+                matrizC = Matriz.multiplicacionMatricial(matrizA, matrizB);
+            } else if (operacion.equals("A(traspuesta)")) {
+                matrizC = Matriz.traspuesta(matrizA);
+            } else if (operacion.equals("B(traspuesta)")) {
+                matrizC = Matriz.traspuesta(matrizB);
+            } else if (operacion.equals("A^n")) {
+                
+                
+                if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
                 JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
                 this.txtExponente.setText(String.valueOf(""));
-            }       
-                int exponente = Integer.parseInt((txtExponente.getText()));
-                if (operacion.equals("A+B")) {
-                    matrizC = Matriz.sumar(matrizA, matrizB);
-                } else if (operacion.equals("A-B")) {
-                    matrizC = Matriz.restar(matrizA, matrizB);
-                } else if (operacion.equals("A*B")) {
-                    matrizC = Matriz.multiplicacionPunto(matrizA, matrizB);
-                } else if (operacion.equals("AxB")) {
-                    matrizC = Matriz.multiplicacionMatricial(matrizA, matrizB);
-                } else if (operacion.equals("A(traspuesta)")) {
-                    matrizC = Matriz.traspuesta(matrizA);
-                } else if (operacion.equals("B(traspuesta)")) {
-                    matrizC = Matriz.traspuesta(matrizB);
-                } else if (operacion.equals("A^n")) {
-                    matrizC = Matriz.Potencia(matrizA, exponente);
-                }else if (operacion.equals("B^n")) {
-                    matrizC = Matriz.Potencia(matrizB, exponente);
                 }
-//            sincronizarTablaC();
-            }catch (Exception ex) {
+                int exponente = Integer.parseInt((txtExponente.getText()));
+                matrizC = Matriz.Potencia(matrizA, exponente);
+            } else if (operacion.equals("B^n")) {
+//                jLabelExponente.setVisible(true);
+//                txtExponente.setVisible(true);
+                if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
+                JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
+                this.txtExponente.setText(String.valueOf(""));
+                }
+                int exponente = Integer.parseInt((txtExponente.getText()));
+                matrizC = Matriz.Potencia(matrizB, exponente);
+            }
+            sincronizarTablaC();
+        } catch (Exception ex) {
             System.out.println(String.format("error creando matriz C: %s", ex.getMessage()));
         }
 
@@ -435,12 +461,14 @@ public class GUI5 extends javax.swing.JFrame {
 
 
     private void btnGuardarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarAMouseClicked
-
+        
+        //sincronizarTablaA();
         // aca seria solo sincronizar??
     }//GEN-LAST:event_btnGuardarAMouseClicked
 
     private void btnGuardarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarBMouseClicked
-
+        
+        //sincronizarTablaB();
         // aca seria solo sincronizar??
     }//GEN-LAST:event_btnGuardarBMouseClicked
 
@@ -544,11 +572,13 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
+    
+    
     private void sincronizarTablaA() {
         try {
             int filasA = matrizA.getCantidadFilas();
             int columnasA = matrizA.getCantidadColumnas();
-            DefaultTableModel model = (DefaultTableModel) jTableA.getModel();
+            DefaultTableModel modelA = (DefaultTableModel) jTableA.getModel();
 
             for (int f = 0; f <= filasA; f++) {
                 for (int c = 0; c <= columnasA; c++) {
@@ -566,7 +596,7 @@ public class GUI5 extends javax.swing.JFrame {
         try {
             int filasB = matrizB.getCantidadFilas();
             int columnasB = matrizB.getCantidadColumnas();
-            DefaultTableModel model = (DefaultTableModel) jTableB.getModel();
+            DefaultTableModel modelB = (DefaultTableModel) jTableB.getModel();
 
             for (int f = 0; f < filasB; f++) {
                 for (int c = 0; c < columnasB; c++) {
@@ -580,16 +610,19 @@ public class GUI5 extends javax.swing.JFrame {
         }
     }
 
+    // creo que hay que cambiar este metodo porque no esta imprimiendo la tabla
     private void sincronizarTablaC() {
         try {
             int filasC = matrizC.getCantidadFilas();
             int columnasC = matrizC.getCantidadColumnas();
-            DefaultTableModel model = (DefaultTableModel) jTableC.getModel();
-
+            DefaultTableModel modelC = (DefaultTableModel) jTableC.getModel();
+            modelC.setRowCount(filasC);
+            modelC.setColumnCount(columnasC);
             for (int f = 0; f < filasC; f++) {
                 for (int c = 0; c < columnasC; c++) {
-                    int valor = (int) jTableC.getValueAt(f, c);
-                    matrizC.setElemento(f, c, valor);
+                    int valor = matrizC.getElemento(f, c);
+                    jTableC.setValueAt(valor, f, c); // 
+                   // matrizC.setElemento(f, c, valor);
                 }
             }
             jTableB.setEnabled(false);
@@ -652,6 +685,7 @@ public class GUI5 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxOperaciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

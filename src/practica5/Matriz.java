@@ -105,6 +105,7 @@ public class Matriz {
 //                return aux;
 //        }
 //    }
+    
 //    public Matriz multiplicarK(int constante) throws Exception {
 //        Matriz aux = new Matriz(this.cantidadFilas, this.cantidadColumnas);
 //        for (int f = 0; f < this.cantidadFilas; f++) {
@@ -247,10 +248,10 @@ public class Matriz {
             default:
 //                for (int f = 0; f < filasA; f++) {
 //                    for (int c = 0; c < columnasA; c++) {
-//                        result.a[f][c] = this.a[f][c];
+//                        result[f][c] = a[f][c];
 //                    }
 //                }
-                for (int f = 0; f < exponente - 1; f++) {
+                for (int f = 1; f <= exponente; f++) {
                     result = multiplicacionPunto(a, a);
                 }
                 return result;
