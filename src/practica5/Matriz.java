@@ -158,7 +158,7 @@ public class Matriz {
         int columnasB = b.getCantidadColumnas();
 
         if (filasA != filasB || columnasA != columnasB) {
-            throw new Exception("Las matrices no son del mismo Orden");
+            throw new Exception("Las matrices NO son del mismo Orden");
         }
         //las filas de la primera Matriz son multiplicados por las columnas de la segunda matriz
         Matriz result = new Matriz(filasA, columnasB);
@@ -178,14 +178,14 @@ public class Matriz {
         int filasB = b.getCantidadFilas();
         int columnasB = b.getCantidadColumnas();
         if (columnasA != filasB) {
-            throw new Exception("Las matrices no son del mismo Orden");
+            throw new Exception("Las matrices NO son del mismo Orden");
         }
         //las filas de la primera Matriz son multiplicados por las columnas de la segunda matriz
         Matriz result = new Matriz(filasA, columnasB);
         for (int f = 0; f < filasA; f++) {
             for (int c = 0; c < columnasB; c++) {
                 int valor = 0;
-                for (int k = 0; k < filasA; k++) {
+                for (int k = 0; k < columnasA; k++) {
                     valor += (a.getElemento(f, k) * b.getElemento(k, c));
                 }
                 result.objetoMatriz[f][c] = valor;
@@ -200,7 +200,7 @@ public class Matriz {
         int columnasT = t.getCantidadColumnas();
 
         if (filasT != columnasT) {
-            throw new Exception("La matriz no es cuadrada");
+            throw new Exception("La matriz NO es cuadrada");
         } else {
             Matriz result = new Matriz(filasT, columnasT);
 
@@ -219,13 +219,13 @@ public class Matriz {
         
         //Valida si el exponente es negativo
         if (exponente < 0) {
-            throw new Exception("Exponente no es mayor o igual a cero!");
+            throw new Exception("Exponente NO es mayor o igual a cero!");
         }
         int filasA = a.getCantidadFilas();
         int columnasA = a.getCantidadColumnas();
         // valida si la matriz es cuadrada
         if (filasA != columnasA) {
-            throw new Exception("La matriz no es cuadrada");
+            throw new Exception("La matriz NO es cuadrada");
         }
         //crea un objeto
         Matriz result = new Matriz(filasA, columnasA);
@@ -251,7 +251,7 @@ public class Matriz {
 //                        result[f][c] = a[f][c];
 //                    }
 //                }
-                for (int f = 1; f <= exponente; f++) {
+                for (int f = 0; f < exponente; f++) {
                     result = multiplicacionPunto(a, a);
                 }
                 return result;

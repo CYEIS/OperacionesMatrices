@@ -356,7 +356,8 @@ public class GUI5 extends javax.swing.JFrame {
     // crear matriz A e imprimir en jTableA
     private void btnCrearAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearAMouseClicked
 
-        btnCalcular.setVisible(true);
+       btnGuardarA.setVisible(true);
+        
         jComboBoxOperaciones.setVisible(true);
         btnReset.setVisible(true);
 
@@ -370,10 +371,12 @@ public class GUI5 extends javax.swing.JFrame {
                 case JOptionPane.YES_OPTION:
 //                JOptionPane.showMessageDialog(null, "Si");
                     crearTablaA(Integer.parseInt(txtFilasA.getText()), Integer.parseInt(txtColumnasA.getText())); // SE DEBE LLENAR LA MATRIZ CON # ALEATORIOS
+                    btnCalcular.setVisible(true);
                     break;
                 case JOptionPane.NO_OPTION:
 //                JOptionPane.showMessageDialog(null, "No");
                     crearTablaAconZeros(Integer.parseInt(txtFilasA.getText()), Integer.parseInt(txtColumnasA.getText())); // SE DEBE LLENAR LA MATRIZ CON # INGRESADOS POR EL USUARIO
+                    btnCalcular.setVisible(false);
                     break;
                 default:
 //                JOptionPane.showMessageDialog(null, "Cancelada"
@@ -384,7 +387,7 @@ public class GUI5 extends javax.swing.JFrame {
     // crear matriz B e imprimir en jTableB
     private void btnCrearBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearBMouseClicked
 
-        btnCalcular.setVisible(true);
+       btnGuardarB.setVisible(true);
         jComboBoxOperaciones.setVisible(true);
         btnReset.setVisible(true);
 
@@ -398,10 +401,12 @@ public class GUI5 extends javax.swing.JFrame {
                 case JOptionPane.YES_OPTION:
 //                JOptionPane.showMessageDialog(null, "Si");
                     crearTablaB(Integer.parseInt(txtFilasB.getText()), Integer.parseInt(txtColumnasB.getText())); // SE DEBE LLENAR LA MATRIZ CON # ALEATORIOS
+                     btnCalcular.setVisible(true);
                     break;
                 case JOptionPane.NO_OPTION:
 //                JOptionPane.showMessageDialog(null, "No");
                     crearTablaBconZeros(Integer.parseInt(txtFilasB.getText()), Integer.parseInt(txtColumnasB.getText())); // SE DEBE LLENAR LA MATRIZ CON # INGRESADOS POR EL USUARIO
+                    btnCalcular.setVisible(false);
                     break;
                 default:
 //                JOptionPane.showMessageDialog(null, "Cancelada"
@@ -433,7 +438,7 @@ public class GUI5 extends javax.swing.JFrame {
             } else if (operacion.equals("B(traspuesta)")) {
                 matrizC = Matriz.traspuesta(matrizB);
             } else if (operacion.equals("A^n")) {
-                
+                //jComboBoxOperaciones.get
                 
                 if ((txtExponente.getText().equals("") || !esNumero(txtExponente.getText()))) {
                 JOptionPane.showMessageDialog(null, "SEÑOR USUARIO, DEBE INGRESAR UN VALOR NUMERICO EN LA POTENCIA PARA PODER OPERAR LA MATRIZ");
@@ -461,15 +466,15 @@ public class GUI5 extends javax.swing.JFrame {
 
 
     private void btnGuardarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarAMouseClicked
-        
-        //sincronizarTablaA();
-        // aca seria solo sincronizar??
+        btnCalcular.setVisible(true);
+        sincronizarTablaA();
+
     }//GEN-LAST:event_btnGuardarAMouseClicked
 
     private void btnGuardarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarBMouseClicked
-        
-        //sincronizarTablaB();
-        // aca seria solo sincronizar??
+        btnCalcular.setVisible(true);
+        sincronizarTablaB();
+       
     }//GEN-LAST:event_btnGuardarBMouseClicked
 
     private void crearTablaA(int filas, int columnas) {
@@ -560,10 +565,10 @@ public class GUI5 extends javax.swing.JFrame {
             modelB.setColumnCount(columnasB);
 
             for (int f = 0; f < filasB; f++) {
-                for (int c = 1; c < columnasB; c++) {
+                for (int c = 0; c < columnasB; c++) {
                     int valor = 0;
                     matrizB.setElemento(f, c, valor);
-                    jTableA.setValueAt(valor, f, c);
+                    jTableB.setValueAt(valor, f, c);
                 }
             }
             jTableB.setEnabled(true);
@@ -580,8 +585,8 @@ public class GUI5 extends javax.swing.JFrame {
             int columnasA = matrizA.getCantidadColumnas();
             DefaultTableModel modelA = (DefaultTableModel) jTableA.getModel();
 
-            for (int f = 0; f <= filasA; f++) {
-                for (int c = 0; c <= columnasA; c++) {
+            for (int f = 0; f < filasA; f++) {
+                for (int c = 0; c < columnasA; c++) {
                     int valor = (int) jTableA.getValueAt(f, c);
                     matrizA.setElemento(f, c, valor);
                 }
@@ -621,8 +626,7 @@ public class GUI5 extends javax.swing.JFrame {
             for (int f = 0; f < filasC; f++) {
                 for (int c = 0; c < columnasC; c++) {
                     int valor = matrizC.getElemento(f, c);
-                    jTableC.setValueAt(valor, f, c); // 
-                   // matrizC.setElemento(f, c, valor);
+                    jTableC.setValueAt(valor, f, c); 
                 }
             }
             jTableB.setEnabled(false);
